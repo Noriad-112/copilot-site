@@ -1,25 +1,23 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
-import { SiteShell } from "@/components/layout/SiteShell";
-import { JsonLd } from "@/components/seo/JsonLd";
-import { site } from "@/lib/site";
-import { createOrganizationJsonLd } from "@/lib/seo";
+import { site } from "@/content/site";
+import { dictionary } from "@/content/i18n";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.siteUrl),
-  title: site.siteName,
-  description: site.description,
+  metadataBase: new URL(site.baseUrl),
+  title: {
+    default: site.name,
+    template: `%s — ${site.name}`,
+  },
+  description: dictionary.en.meta.description,
   openGraph: {
-    title: site.siteName,
-    description: site.description,
-    url: site.siteUrl,
-    siteName: site.siteName,
+    title: site.name,
+    description: dictionary.en.meta.description,
+    url: site.baseUrl,
+    siteName: site.name,
     type: "website",
-    images: [
-      {
-        url: site.ogImage,
-      },
-    ],
+    images: [{ url: site.ogImage }],
   },
 };
 
@@ -30,10 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        <SiteShell>{children}</SiteShell>
-        <JsonLd data={createOrganizationJsonLd(site)} />
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

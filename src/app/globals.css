@@ -1,19 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #f6f2ec;
-  --foreground: #1c242b;
-  --ink-soft: #3f4a52;
-  --accent: #1f4b3f;
-  --accent-soft: #d6e3dc;
-  --surface: #fbf9f6;
+  --background: #f5f1ea;
+  --foreground: #1f262b;
+  --ink-soft: #4a5560;
+  --accent: #3c5b4a;
+  --accent-soft: #dbe4d9;
+  --surface: #fbf8f3;
   --surface-elevated: #ffffff;
-  --surface-muted: #f2ede6;
-  --border-soft: rgba(148, 163, 184, 0.25);
-  --font-body: "Avenir Next", "Futura", "Trebuchet MS", "Helvetica Neue",
-    "Helvetica", "Arial", sans-serif;
-  --font-heading: "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
-    "Georgia", "Times New Roman", serif;
+  --surface-muted: #efe9e1;
+  --border-soft: rgba(120, 130, 138, 0.22);
+  --font-body: "Manrope", "Avenir Next", "Helvetica Neue", "Helvetica", "Arial",
+    sans-serif;
+  --font-heading: var(--font-body);
 }
 
 @theme inline {
@@ -28,4 +28,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-soft);
 }
