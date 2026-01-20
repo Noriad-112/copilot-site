@@ -1,11 +1,10 @@
-import { site } from "@/lib/site";
+import { site } from "@/content/site";
 
 export function GET() {
-  // TODO: Replace with real updates when available.
   const payload = {
-    title: "Copilot Ventures Updates",
-    home_page_url: site.siteUrl,
-    feed_url: `${site.siteUrl}/feed.json`,
+    title: "Roots & Remedies Journal",
+    home_page_url: site.baseUrl,
+    feed_url: `${site.baseUrl}/feed.json`,
     items: [],
   };
 

@@ -1,24 +1,21 @@
 export const site = {
-  siteName: "Copilot Ventures",
-  legalName: "Copilot Ventures B.V.",
-  // TODO: update to production domain.
-  siteUrl: "https://www.copilot.earth",
+  siteName: "Roots & Remedies",
+  legalName: "Roots & Remedies Stichting",
+  siteUrl: "https://rootsandremedies.earth",
   description:
-    "Copilot Ventures is an advisory studio designing governance, ownership, and financial systems for the alternative economy.",
-  tagline: "Infrastructure for the alternative economy.",
-  // TODO: replace with real contact email.
-  contactEmail: "contact@copilot.earth",
+    "Roots & Remedies is a Dutch foundation stewarding an ecosystem of regenerative experiments in food, land, energy, and governance.",
+  tagline: "A foundation stewarding an ecosystem of regenerative experiments.",
+  contactEmail: "hello@rootsandremedies.earth",
   navItems: [
-    { label: "Home", href: "/" },
-    { label: "Approach", href: "/approach" },
-    { label: "Ventures", href: "/ventures" },
-    { label: "Services", href: "/services" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "/en" },
+    { label: "Mission", href: "/en/mission" },
+    { label: "Ecosystem", href: "/en/ecosystem" },
+    { label: "Projects", href: "/en/projects" },
+    { label: "Journal", href: "/en/journal" },
+    { label: "Contact", href: "/en/contact" },
   ],
   socials: {
-    linkedin: "https://www.linkedin.com/company/copilot-ventures",
+    linkedin: "",
   },
-  // TODO: add a real Open Graph image file.
   ogImage: "/og-image.png",
 };

@@ -62,10 +62,9 @@ export default function AboutPage() {
             </p>
             <p>
               With a background in socio-cultural anthropology (University of
-              Virginia), Dorian has built ventures across the US and Europe,
-              including Clipso, Mainstay Materials, Fento, and Selection Sauvage.
-              His work spans import/export, technical sales, architectural
-              products, and hospitality.
+              Virginia), Dorian has built ventures across the US and Europe. His
+              work spans import/export, technical sales, architectural products,
+              and hospitality.
             </p>
             <p>
               He completed the Lift Alternative Economy MBA and holacracy

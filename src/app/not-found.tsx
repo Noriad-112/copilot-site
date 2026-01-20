@@ -1,24 +1,22 @@
 import Link from "next/link";
 
-import { PageHeader } from "@/components/ui/PageHeader";
-import { Section } from "@/components/ui/Section";
-
 export default function NotFound() {
   return (
-    <Section size="loose" className="pt-12 sm:pt-16">
-      <PageHeader
-        eyebrow="404"
-        title="This page doesn’t exist."
-        description="The page you’re looking for isn’t here. Head back to the homepage."
-      />
-      <div className="mt-6">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-slate-700 underline-offset-4 transition hover:text-slate-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-        >
-          Back to home
-        </Link>
+    <main className="mx-auto flex min-h-[60vh] w-full max-w-3xl flex-col items-start justify-center gap-6 px-6 py-16">
+      <div>
+        <p className="text-xs uppercase tracking-[0.4em] text-[color:var(--ink-soft)]">
+          404
+        </p>
+        <h1 className="mt-3 text-3xl font-semibold text-[color:var(--foreground)]">
+          Page not found
+        </h1>
       </div>
-    </Section>
+      <Link
+        href="/en"
+        className="text-sm text-[color:var(--accent)] transition hover:text-[color:var(--foreground)]"
+      >
+        Back to home
+      </Link>
+    </main>
   );
 }

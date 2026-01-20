@@ -18,14 +18,14 @@ type Venture = {
 
 const ventures: Venture[] = [
   {
-    id: "selection-sauvage",
-    name: "Selection Sauvage",
-    categoryTags: ["Wine", "Distribution"],
-    status: "Active",
-    url: "https://selectionsauvage.example",
+    id: "food-culture-lab",
+    name: "Hospitality / food lab (in development)",
+    categoryTags: ["Hospitality", "Food"],
+    status: "Developing",
+    url: null,
     description: [
-      "Natural wine import and distribution business anchored in tastings, events, and cultural collaborations.",
-      "Copilot advises on strategic direction, finance management, and operational clarity.",
+      "Concept-stage hospitality and food experiment focused on community and cultural exchange.",
+      "Currently held as an internal prototype with no public-facing operations yet.",
     ],
   },
   {
@@ -36,18 +36,18 @@ const ventures: Venture[] = [
     url: "https://sauvagespace.example",
     description: [
       "Hybrid venue in Amsterdam for coffee, food, wine, and cultural programming.",
-      "A testing ground for alternative-economy ideas: shared use, mixed tenants, and community-focused events.",
+      "A testing ground for alternative-economy ideas: shared use and community-focused events.",
     ],
   },
   {
     id: "experimental-lab",
-    name: "Experimental / Lab Initiatives",
-    categoryTags: ["Lab", "Infrastructure"],
+    name: "Home-scale energy & digital autonomy",
+    categoryTags: ["Framework", "Infrastructure"],
     status: "Ongoing",
     url: null,
     description: [
-      "Home-lab, digital-sovereignty, and energy-autonomy experiments: solar, battery, Bitcoin node, and local resilience tooling.",
-      "These explorations inform how Copilot advises on infrastructure, risk, and technical competence.",
+      "A consulting framework exploring local energy resilience and digital autonomy patterns.",
+      "Insights are folded back into governance and infrastructure advisory work.",
     ],
   },
 ];

@@ -1,13 +1,13 @@
 import type { MetadataRoute } from "next";
 
-import { site } from "@/lib/site";
+import { site } from "@/content/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: "*",
-      allow: ["/", "/meta.json", "/feed.json"],
+      allow: ["/en", "/nl", "/en/*", "/nl/*"],
     },
-    sitemap: `${site.siteUrl}/sitemap.xml`,
+    sitemap: `${site.baseUrl}/sitemap.xml`,
   };
 }

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { site } from "@/content/site";
-import { dictionary } from "@/content/i18n";
+import { i18n } from "@/content/i18n";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.baseUrl),
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
     default: site.name,
     template: `%s — ${site.name}`,
   },
-  description: dictionary.en.meta.description,
+  description: i18n.en.siteMetaDescription,
   openGraph: {
     title: site.name,
-    description: dictionary.en.meta.description,
+    description: i18n.en.siteMetaDescription,
     url: site.baseUrl,
     siteName: site.name,
     type: "website",
