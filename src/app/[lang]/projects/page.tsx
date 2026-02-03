@@ -9,25 +9,35 @@ import { Badge } from "@/components/site/Badge";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLanguage, type Language } from "@/lib/i18n";
 
-export function generateMetadata({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const dict = getDictionary(params.lang as Language);
+  const dict = getDictionary(lang as Language);
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: dict.projectsPage.title,
     description: dict.projectsPage.intro,
-    path: `/${params.lang}/projects`,
+    path: `/${lang}/projects`,
   });
 }
 
-export default function ProjectsPage({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
   const featured = ecosystemItems.filter((item) => item.featured);
 
   return (
@@ -40,7 +50,7 @@ export default function ProjectsPage({ params }: { params: { lang: string } }) {
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           {featured.map((item) => {
-            const label = item.labels[lang] ?? item.labels.en;
+            const label = item.labels[currentLang] ?? item.labels.en;
             const name = label?.name ?? item.slug;
             const description = label?.description ?? "";
             return (
@@ -64,14 +74,14 @@ export default function ProjectsPage({ params }: { params: { lang: string } }) {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      {lang === "nl" ? "Bezoek" : "Visit"}
+                      {currentLang === "nl" ? "Bezoek" : "Visit"}
                     </Link>
                   ) : (
                     <Link
-                      href={`/${lang}/projects/${item.slug}`}
+                      href={`/${currentLang}/projects/${item.slug}`}
                       className="text-sm text-[color:var(--accent)] transition hover:text-[color:var(--foreground)]"
                     >
-                      {lang === "nl" ? "Lees meer" : "Learn more"}
+                      {currentLang === "nl" ? "Lees meer" : "Learn more"}
                     </Link>
                   )}
                 </div>
@@ -87,9 +97,10 @@ export default function ProjectsPage({ params }: { params: { lang: string } }) {
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           {ecosystemItems.map((item) => {
-            const label = item.labels[lang] ?? item.labels.en;
+            const label = item.labels[currentLang] ?? item.labels.en;
             const name = label?.name ?? item.slug;
-            const kindLabel = i18n.kindLabels[lang][item.kind] ?? item.kind;
+            const kindLabel =
+              i18n.kindLabels[currentLang][item.kind] ?? item.kind;
             return (
               <Card key={item.slug} className="flex h-full flex-col gap-3">
                 <div className="flex items-center justify-between gap-3">

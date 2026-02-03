@@ -3,7 +3,8 @@ export type Lang = "en" | "nl";
 export const i18n = {
   en: {
     siteTitle: "Roots & Remedies",
-    siteTagline: "A foundation stewarding an ecosystem of regenerative experiments.",
+    siteTagline:
+      "A Dutch foundation stewarding regenerative experiments in food, land, energy, and governance.",
     siteMetaDescription:
       "Roots & Remedies is a Dutch foundation stewarding an ecosystem of regenerative experiments in food, land, energy, and governance.",
 
@@ -18,7 +19,8 @@ export const i18n = {
 
     hero: {
       title: "Roots & Remedies",
-      subtitle: "A foundation stewarding an ecosystem of regenerative experiments.",
+      subtitle:
+        "A Dutch foundation stewarding regenerative experiments in food, land, energy, and governance.",
       intro:
         "Roots & Remedies is a Dutch foundation that holds and supports real-world experiments in food, land, energy, and governance. We prototype ownership and economic models that are less extractive and more relational.",
       primaryCta: "Collaborate or co-build",
@@ -151,7 +153,7 @@ export const i18n = {
   nl: {
     siteTitle: "Roots & Remedies",
     siteTagline:
-      "Een stichting die een ecosysteem van regeneratieve experimenten ondersteunt.",
+      "Een Nederlandse stichting die regeneratieve experimenten in voedsel, land, energie en governance ondersteunt.",
     siteMetaDescription:
       "Roots & Remedies is een Nederlandse stichting die een ecosysteem van regeneratieve experimenten in voedsel, land, energie en governance ondersteunt.",
 
@@ -167,7 +169,7 @@ export const i18n = {
     hero: {
       title: "Roots & Remedies",
       subtitle:
-        "Een stichting die een ecosysteem van regeneratieve experimenten ondersteunt.",
+        "Een Nederlandse stichting die regeneratieve experimenten in voedsel, land, energie en governance ondersteunt.",
       intro:
         "Roots & Remedies is een Nederlandse stichting die echte experimenten in voedsel, land, energie en governance ondersteunt. We ontwerpen eigendoms- en economische modellen die minder uitputtend en meer relationeel zijn.",
       primaryCta: "Samenwerken of meebouwen",

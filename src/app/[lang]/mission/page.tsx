@@ -5,25 +5,35 @@ import { Card } from "@/components/site/Card";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLanguage, type Language } from "@/lib/i18n";
 
-export function generateMetadata({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const dict = getDictionary(params.lang as Language);
+  const dict = getDictionary(lang as Language);
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: dict.missionPage.title,
     description: dict.missionPage.intro,
-    path: `/${params.lang}/mission`,
+    path: `/${lang}/mission`,
   });
 }
 
-export default function MissionPage({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export default async function MissionPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
 
   return (
     <div className="space-y-16">

@@ -15,30 +15,36 @@ function formatDate(date: string, lang: Language) {
   }).format(new Date(date));
 }
 
-export async function generateMetadata({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const dict = getDictionary(params.lang as Language);
+  const dict = getDictionary(lang as Language);
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: dict.journalPage.title,
     description: dict.journalPage.intro,
-    path: `/${params.lang}/journal`,
+    path: `/${lang}/journal`,
   });
 }
 
 export default async function JournalPage({
   params,
 }: {
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
-  if (!isValidLanguage(params.lang)) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
-  const posts = await getAllJournalPosts(lang);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
+  const posts = await getAllJournalPosts(currentLang);
 
   return (
     <div className="space-y-12">
@@ -52,11 +58,11 @@ export default async function JournalPage({
             <Card key={post.slug} className="space-y-4">
               <div className="space-y-1">
                 <p className="text-xs uppercase tracking-[0.2em] text-[color:var(--ink-soft)]">
-                  {formatDate(post.date, lang)}
+                  {formatDate(post.date, currentLang)}
                 </p>
                 <h2 className="text-2xl font-semibold text-[color:var(--foreground)]">
                   <Link
-                    href={`/${lang}/journal/${post.slug}`}
+                    href={`/${currentLang}/journal/${post.slug}`}
                     className="transition hover:text-[color:var(--accent)]"
                   >
                     {post.title}

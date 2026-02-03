@@ -47,6 +47,7 @@ export default function AboutPage() {
         <PageHeader
           eyebrow="About"
           title="Dorian Lynch-Geis"
+          titleClassName="text-2xl sm:text-3xl"
           description="Founder of Copilot Ventures. Builder of food, wine, and culture ventures. Student of alternative economics, governance, and ecology."
         />
       </Section>

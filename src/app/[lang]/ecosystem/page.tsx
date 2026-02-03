@@ -9,25 +9,35 @@ import { Badge } from "@/components/site/Badge";
 import { buildMetadata } from "@/lib/metadata";
 import { getDictionary, isValidLanguage, type Language } from "@/lib/i18n";
 
-export function generateMetadata({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const dict = getDictionary(params.lang as Language);
+  const dict = getDictionary(lang as Language);
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: dict.ecosystemPage.title,
     description: dict.ecosystemPage.intro,
-    path: `/${params.lang}/ecosystem`,
+    path: `/${lang}/ecosystem`,
   });
 }
 
-export default function EcosystemPage({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export default async function EcosystemPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
 
   return (
     <div className="space-y-12">
@@ -35,11 +45,11 @@ export default function EcosystemPage({ params }: { params: { lang: string } }) 
 
       <div className="grid gap-6 md:grid-cols-2">
         {ecosystemItems.map((item) => {
-          const label = item.labels[lang] ?? item.labels.en;
+          const label = item.labels[currentLang] ?? item.labels.en;
           const name = label?.name ?? item.slug;
           const description = label?.description ?? "";
           const location = item.locations.join(" · ");
-          const kindLabel = i18n.kindLabels[lang][item.kind] ?? item.kind;
+          const kindLabel = i18n.kindLabels[currentLang][item.kind] ?? item.kind;
           return (
             <Card key={item.slug} className="flex h-full flex-col gap-4">
               <div className="flex flex-wrap items-start justify-between gap-3">

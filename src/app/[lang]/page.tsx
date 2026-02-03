@@ -19,30 +19,40 @@ const highlightSlugs = [
   "hospitality-food-lab",
 ];
 
-export function generateMetadata({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const dict = getDictionary(params.lang as Language);
+  const dict = getDictionary(lang as Language);
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: dict.siteTitle,
     description: dict.siteMetaDescription,
-    path: `/${params.lang}`,
+    path: `/${lang}`,
   });
 }
 
-export default function Home({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
   const highlights = ecosystemItems.filter((item) =>
     highlightSlugs.includes(item.slug),
   );
 
-  const kindLabels = i18n.kindLabels[lang];
+  const kindLabels = i18n.kindLabels[currentLang];
 
   return (
     <div className="space-y-16">
@@ -55,13 +65,13 @@ export default function Home({ params }: { params: { lang: string } }) {
         </div>
         <div className="flex flex-wrap gap-3">
           <Link
-            href={`/${lang}/contact`}
+            href={`/${currentLang}/contact`}
             className="rounded-full bg-[color:var(--accent)] px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[color:var(--foreground)]"
           >
             {dict.hero.primaryCta}
           </Link>
           <Link
-            href={`/${lang}/journal`}
+            href={`/${currentLang}/journal`}
             className="rounded-full border border-[color:var(--border-soft)] px-5 py-2 text-sm font-medium text-[color:var(--foreground)] transition hover:border-[color:var(--foreground)]"
           >
             {dict.hero.secondaryCta}
@@ -80,7 +90,7 @@ export default function Home({ params }: { params: { lang: string } }) {
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           {highlights.map((item) => {
-            const label = item.labels[lang] ?? item.labels.en;
+            const label = item.labels[currentLang] ?? item.labels.en;
             const name = label?.name ?? item.slug;
             const description = label?.description ?? "";
             const kindLabel = kindLabels[item.kind] ?? item.kind;
@@ -143,20 +153,20 @@ export default function Home({ params }: { params: { lang: string } }) {
               {dict.hero.primaryCta}
             </h2>
             <p className="max-w-xl text-sm text-[color:var(--ink-soft)]">
-              {lang === "nl"
+              {currentLang === "nl"
                 ? "We bouwen graag samen met mensen die wortels willen leggen en nieuwe economische vormen willen testen."
                 : "We co-build with people ready to put down roots and test new economic forms."}
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href={`/${lang}/contact`}
+              href={`/${currentLang}/contact`}
               className="rounded-full bg-[color:var(--accent)] px-5 py-2 text-sm font-medium text-white shadow-sm transition hover:bg-[color:var(--foreground)]"
             >
               {dict.hero.primaryCta}
             </Link>
             <Link
-              href={`/${lang}/journal`}
+              href={`/${currentLang}/journal`}
               className="rounded-full border border-[color:var(--border-soft)] px-5 py-2 text-sm font-medium text-[color:var(--foreground)] transition hover:border-[color:var(--foreground)]"
             >
               {dict.hero.secondaryCta}

@@ -34,37 +34,39 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: string; slug: string };
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  if (!isValidLanguage(params.lang)) {
+  const { lang, slug } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const post = await getJournalPost(params.lang as Language, params.slug);
+  const post = await getJournalPost(lang as Language, slug);
   if (!post) {
     return {};
   }
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: post.meta.title,
     description: post.meta.summary,
-    path: `/${params.lang}/journal/${params.slug}`,
+    path: `/${lang}/journal/${slug}`,
   });
 }
 
 export default async function JournalPostPage({
   params,
 }: {
-  params: { lang: string; slug: string };
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  if (!isValidLanguage(params.lang)) {
+  const { lang, slug } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const post = await getJournalPost(lang, params.slug);
+  const currentLang = lang as Language;
+  const post = await getJournalPost(currentLang, slug);
   if (!post) {
     notFound();
   }
-  const dict = getDictionary(lang);
+  const dict = getDictionary(currentLang);
   const { content } = await compileMDX({
     source: post.content,
     components: mdxComponents,
@@ -74,14 +76,14 @@ export default async function JournalPostPage({
     <div className="space-y-10">
       <PageHeader
         title={post.meta.title}
-        subtitle={formatDate(post.meta.date, lang)}
+        subtitle={formatDate(post.meta.date, currentLang)}
         intro={post.meta.summary}
       />
       <article className="space-y-6">
         {content}
       </article>
       <Link
-        href={`/${lang}/journal`}
+        href={`/${currentLang}/journal`}
         className="text-sm text-[color:var(--accent)] transition hover:text-[color:var(--foreground)]"
       >
         {dict.nav.journal}

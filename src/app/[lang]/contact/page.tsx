@@ -7,25 +7,35 @@ import { buildMetadata } from "@/lib/metadata";
 import { site } from "@/content/site";
 import { getDictionary, isValidLanguage, type Language } from "@/lib/i18n";
 
-export function generateMetadata({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const dict = getDictionary(params.lang as Language);
+  const dict = getDictionary(lang as Language);
   return buildMetadata({
-    lang: params.lang as Language,
+    lang: lang as Language,
     title: dict.contactPage.title,
     description: dict.contactPage.intro,
-    path: `/${params.lang}/contact`,
+    path: `/${lang}/contact`,
   });
 }
 
-export default function ContactPage({ params }: { params: { lang: string } }) {
-  if (!isValidLanguage(params.lang)) {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
 
   return (
     <div className="space-y-12">

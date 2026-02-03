@@ -4,7 +4,8 @@ export const site = {
   siteUrl: "https://rootsandremedies.earth",
   description:
     "Roots & Remedies is a Dutch foundation stewarding an ecosystem of regenerative experiments in food, land, energy, and governance.",
-  tagline: "A foundation stewarding an ecosystem of regenerative experiments.",
+  tagline:
+    "A Dutch foundation stewarding regenerative experiments in food, land, energy, and governance.",
   contactEmail: "hello@rootsandremedies.earth",
   navItems: [
     { label: "Home", href: "/en" },

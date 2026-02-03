@@ -23,6 +23,7 @@ Key editing entry points:
 - Contact: `src/app/contact/page.tsx`
 
 More context and handoff details: `PROJECT-OVERVIEW.md`.
+Architecture template reference: `/home/basecamp_noriad/dev/copilot-templates/website-architecture-template-nextjs-app-router.md`.
 
 ## Deploy on Vercel
 See `DEPLOYING.md`.

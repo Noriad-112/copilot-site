@@ -3,7 +3,7 @@
 ## 1) Deploy to Vercel (from GitHub)
 1. Go to Vercel → Add New Project.
 2. Import the Copilot Ventures repository.
-3. Set Project Name (e.g., `copilot-ventures-draft`).
+3. Set Project Name (e.g., `roots-and-remedies-draft`).
 4. Framework: choose **Next.js**.
 5. Branch: select `main`.
 6. Click **Deploy**.

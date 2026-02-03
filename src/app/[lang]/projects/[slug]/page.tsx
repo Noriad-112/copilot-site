@@ -14,49 +14,52 @@ export async function generateStaticParams() {
   );
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { lang: string; slug: string };
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  if (!isValidLanguage(params.lang)) {
+  const { lang, slug } = await params;
+  if (!isValidLanguage(lang)) {
     return {};
   }
-  const item = ecosystemItems.find((entry) => entry.slug === params.slug);
+  const item = ecosystemItems.find((entry) => entry.slug === slug);
   if (!item) {
     return {};
   }
-  const lang = params.lang as Language;
-  const label = item.labels[lang] ?? item.labels.en;
+  const currentLang = lang as Language;
+  const label = item.labels[currentLang] ?? item.labels.en;
   const title = label?.name ?? item.slug;
   const description = label?.description ?? "";
   return buildMetadata({
-    lang,
+    lang: currentLang,
     title,
     description,
-    path: `/${params.lang}/projects/${params.slug}`,
+    path: `/${lang}/projects/${slug}`,
   });
 }
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { lang: string; slug: string };
+  params: Promise<{ lang: string; slug: string }>;
 }) {
-  if (!isValidLanguage(params.lang)) {
+  const { lang, slug } = await params;
+  if (!isValidLanguage(lang)) {
     notFound();
   }
-  const lang = params.lang as Language;
-  const dict = getDictionary(lang);
-  const item = ecosystemItems.find((entry) => entry.slug === params.slug);
+  const currentLang = lang as Language;
+  const dict = getDictionary(currentLang);
+  const item = ecosystemItems.find((entry) => entry.slug === slug);
   if (!item) {
     notFound();
   }
 
-  const label = item.labels[lang] ?? item.labels.en;
+  const label = item.labels[currentLang] ?? item.labels.en;
   const name = label?.name ?? item.slug;
   const description = label?.description ?? "";
-  const kindLabel = i18n.kindLabels[lang][item.kind] ?? item.kind;
+  const kindLabel =
+    i18n.kindLabels[currentLang][item.kind] ?? item.kind;
   const location = item.locations.join(" · ");
 
   return (
@@ -78,10 +81,10 @@ export default function ProjectDetailPage({
         </p>
         <div className="mt-6">
           <Link
-            href={`/${lang}/projects`}
+            href={`/${currentLang}/projects`}
             className="text-sm text-[color:var(--accent)] transition hover:text-[color:var(--foreground)]"
           >
-            {lang === "nl" ? "Terug naar projecten" : "Back to projects"}
+            {currentLang === "nl" ? "Terug naar projecten" : "Back to projects"}
           </Link>
         </div>
       </div>
