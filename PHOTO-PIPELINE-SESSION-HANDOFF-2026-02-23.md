@@ -41,6 +41,12 @@ This note captures the practical work completed on the Framework laptop for the 
   - `photo-sync-bg`
   - `photo-sync-status`
   - `photo-log`
+- Added monthly retention automation (user-level systemd):
+  - `~/.config/systemd/user/photo-archive-monthly.service`
+  - `~/.config/systemd/user/photo-archive-monthly.timer`
+  - Enabled with `systemctl --user enable --now photo-archive-monthly.timer`
+- Added overlap protection to archive script:
+  - `photo-archive.sh` now uses a lock file (`/tmp/photo-archive.lock`) and exits if another run is active.
 
 ## Current operational caveat
 There were multiple overlapping rsync processes during manual retries. Run only one sync at a time.
@@ -68,4 +74,4 @@ systemd-inhibit --what=sleep:idle --why="Photo NAS sync" \
 
 ## What remains
 - Let a single clean `photo-sync` run complete end-to-end after prior interrupted attempts.
-- Optional: add monthly timer for full (non-`--sync-only`) archive cleanup to enforce 3-year local rolling window.
+- Monthly timer exists; optionally tune schedule (`OnCalendar`) and randomization window.
