@@ -4,18 +4,20 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { getDictionary, isValidLanguage, type Language } from "@/lib/i18n";
 
-export default function LangLayout({
+export default async function LangLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: Promise<{ lang: string }>;
 }) {
-  if (!isValidLanguage(params.lang)) {
+  const { lang: langParam } = await params;
+
+  if (!isValidLanguage(langParam)) {
     notFound();
   }
 
-  const lang = params.lang as Language;
+  const lang = langParam as Language;
   const dict = getDictionary(lang);
 
   return (
