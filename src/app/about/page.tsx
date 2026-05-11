@@ -9,7 +9,7 @@ import { createPersonJsonLd, createWebPageJsonLd } from "@/lib/seo";
 
 const pageTitle = "About — Copilot Ventures";
 const pageDescription =
-  "Copilot Ventures is led by Dorian Lynch-Geis, advising alternative economy ventures in food, culture, and infrastructure.";
+  "Copilot Ventures is led by Dorian Cole, advising alternative economy ventures in food, culture, and infrastructure.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -36,7 +36,7 @@ export default function AboutPage() {
       />
       <JsonLd
         data={createPersonJsonLd(site, {
-          name: "Dorian Lynch-Geis",
+          name: "Dorian Cole",
           description:
             "Founder of Copilot Ventures, advising alternative economy ventures in food, culture, and infrastructure.",
           jobTitle: "Founder, Copilot Ventures",
@@ -46,8 +46,8 @@ export default function AboutPage() {
       <Section size="loose" className="pt-12 sm:pt-16">
         <PageHeader
           eyebrow="About"
-          title="Dorian Lynch-Geis"
-          titleClassName="text-2xl sm:text-3xl"
+          title="Dorian Cole"
+          titleClassName="text-lg sm:text-xl"
           description="Founder of Copilot Ventures. Builder of food, wine, and culture ventures. Student of alternative economics, governance, and ecology."
         />
       </Section>
@@ -56,7 +56,7 @@ export default function AboutPage() {
         <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-4 text-base text-slate-600">
             <p>
-              Dorian Lynch-Geis is the founder of Copilot Ventures, an advisory
+              Dorian Cole is the founder of Copilot Ventures, an advisory
               studio for alternative economy ventures. Copilot grew out of two
               decades spent building practical businesses — and the desire to
               design structures that outlast hype cycles.
