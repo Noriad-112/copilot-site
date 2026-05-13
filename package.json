@@ -2,6 +2,9 @@
   "name": "roots-and-remedies-site",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "NEXT_DISABLE_TURBOPACK=1 NEXT_PRIVATE_DISABLE_TURBOPACK=1 next build",
