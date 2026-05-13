@@ -1,12 +1,14 @@
 export const site = {
-  siteName: "Roots & Remedies",
-  legalName: "Roots & Remedies Stichting",
-  siteUrl: "https://rootsandremedies.earth",
+  siteName: "Copilot Ventures",
+  // TODO: Confirm exact legal entity naming for public metadata.
+  legalName: "Copilot Ventures B.V.",
+  siteUrl: "https://www.copilot.earth",
   description:
-    "Roots & Remedies is a Dutch foundation stewarding an ecosystem of regenerative experiments in food, land, energy, and governance.",
+    "Copilot Ventures is an advisory studio designing ownership, governance, and financial systems for alternative economy ventures.",
   tagline:
-    "A Dutch foundation stewarding regenerative experiments in food, land, energy, and governance.",
-  contactEmail: "hello@rootsandremedies.earth",
+    "An advisory studio for ownership, governance, and financial architecture in alternative economy ventures.",
+  // TODO: Confirm canonical public contact inbox.
+  contactEmail: "contact@copilot.earth",
   navItems: [
     { label: "Home", href: "/en" },
     { label: "Mission", href: "/en/mission" },

@@ -2,6 +2,13 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.[^/]+$/;
+const TOP_LEVEL_ROUTES = new Set([
+  "about",
+  "approach",
+  "contact",
+  "services",
+  "ventures",
+]);
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -21,6 +28,10 @@ export function middleware(request: NextRequest) {
   const segments = pathname.split("/").filter(Boolean);
   const first = segments[0];
   if (first === "en" || first === "nl") {
+    return NextResponse.next();
+  }
+
+  if (TOP_LEVEL_ROUTES.has(first)) {
     return NextResponse.next();
   }
 
