@@ -47,7 +47,7 @@ export default function AboutPage() {
         <PageHeader
           eyebrow="About"
           title="Dorian Cole"
-          titleClassName="text-lg sm:text-xl"
+          titleClassName="!text-[1.575rem] sm:!text-[2.1rem]"
           description="Founder of Copilot Ventures. Builder of food, wine, and culture ventures. Student of alternative economics, governance, and ecology."
         />
       </Section>
