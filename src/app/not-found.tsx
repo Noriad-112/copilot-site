@@ -12,7 +12,7 @@ export default function NotFound() {
         </h1>
       </div>
       <Link
-        href="/en"
+        href="/"
         className="text-sm text-[color:var(--accent)] transition hover:text-[color:var(--foreground)]"
       >
         Back to home

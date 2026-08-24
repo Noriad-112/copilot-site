@@ -10,12 +10,12 @@ export const site = {
   // TODO: Confirm canonical public contact inbox.
   contactEmail: "contact@copilot.earth",
   navItems: [
-    { label: "Home", href: "/en" },
-    { label: "Mission", href: "/en/mission" },
-    { label: "Ecosystem", href: "/en/ecosystem" },
-    { label: "Projects", href: "/en/projects" },
-    { label: "Journal", href: "/en/journal" },
-    { label: "Contact", href: "/en/contact" },
+    { label: "Home", href: "/" },
+    { label: "Approach", href: "/approach" },
+    { label: "Ventures", href: "/ventures" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ],
   socials: {
     linkedin: "",

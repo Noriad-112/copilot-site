@@ -1,18 +1,16 @@
-import { i18n } from "@/content/i18n";
-import { site } from "@/content/site";
+import { site } from "@/lib/site";
 
 export function GET() {
   const payload = {
-    name: site.name,
-    legalName: site.legalName,
-    url: site.baseUrl,
-    description: i18n.en.siteMetaDescription,
+    name: site.siteName,
+    url: site.siteUrl,
+    description: site.description,
     contactEmail: site.contactEmail,
-    focus: [
-      "Regenerative stewardship",
-      "Governance and ownership experiments",
-      "Place-based cultural and food projects",
-      "Alternative economy prototyping",
+    services: [
+      "Venture & ownership architecture",
+      "Financial systems & cost discipline",
+      "Operational design & governance",
+      "Place-based strategy",
     ],
     updatedAt: new Date().toISOString(),
   };
