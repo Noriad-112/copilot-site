@@ -12,7 +12,7 @@ export function PageHeader({ title, description, eyebrow }: PageHeaderProps) {
           {eyebrow}
         </p>
       ) : null}
-      <h1 className="font-serif text-4xl text-slate-900 sm:text-5xl">
+      <h1 className="font-serif text-xl text-slate-900 sm:text-2xl">
         {title}
       </h1>
       {description ? (
